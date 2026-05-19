@@ -14,37 +14,46 @@ dotnet run
 
 Default URLs: `https://localhost:7098` and `http://localhost:5015` (see `Properties/launchSettings.json`).
 
-## Connect to GitHub
+## GitHub
 
-### 1. Sign in to GitHub CLI (once)
+This project is configured for:
 
-```bash
+**https://github.com/Kizitoakachukwu/StudentConferenceApp**
+
+The local repo already has an initial commit on branch `main` and `origin` set to that URL.
+
+### Publish to your account (one-time)
+
+1. Sign in to GitHub CLI:
+
+```powershell
 gh auth login
 ```
 
-Choose **GitHub.com**, **HTTPS**, and sign in in the browser.
+2. Create the repo and push:
 
-### 2. Create the remote repository and push
-
-From the repository root:
-
-```bash
-git add .
-git commit -m "Initial commit: StudentConferenceApp"
-gh repo create StudentConferenceApp --source=. --public --push
+```powershell
+cd c:\Users\kizit\source\repos\StudentConferenceApp
+.\scripts\push-to-github.ps1
 ```
 
-Use `--private` instead of `--public` if you want a private repo.
+Or manually:
 
-### 3. Or link an existing empty repo on GitHub
+```powershell
+gh repo create Kizitoakachukwu/StudentConferenceApp --public --source=. --remote=origin --push
+```
 
-```bash
-git remote add origin https://github.com/YOUR_USERNAME/StudentConferenceApp.git
-git branch -M main
+Use `--private` instead of `--public` for a private repository.
+
+### Alternative (browser)
+
+1. Open [Create repository](https://github.com/new?name=StudentConferenceApp) (signed in as **Kizitoakachukwu**).
+2. Name: `StudentConferenceApp`, leave it empty (no README).
+3. Run:
+
+```powershell
 git push -u origin main
 ```
-
-Replace `YOUR_USERNAME` with your GitHub username.
 
 ## Configuration
 
