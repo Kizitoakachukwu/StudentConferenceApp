@@ -1,0 +1,163 @@
+@page
+@model StudentConferenceApp.Web.Pages.Participant.ConferenceRegistrationModel
+@{
+    ViewData["Title"] = "Conference registration";
+}
+
+<section class="py-5 min-vh-100 sc-hero">
+    <div class="container py-lg-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-xl-8">
+                <div class="sc-card">
+                    <div class="p-4 p-md-5 border-bottom border-secondary border-opacity-25">
+                        <h1 class="h3 fw-bold mb-2">Conference registration</h1>
+                        <p class="text-secondary small mb-0">
+                            Step 2 of 2 — Signed in as <strong class="text-light">@Model.AccountEmail</strong>
+                        </p>
+                    </div>
+                    <div class="p-4 p-md-5">
+                        <form method="post" enctype="multipart/form-data">
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                <div asp-validation-summary="All" class="alert alert-danger small" role="alert"></div>
+                            }
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label asp-for="Input.SpeakerLastName" class="form-label"></label>
+                                    <input asp-for="Input.SpeakerLastName" class="form-control form-control-lg" />
+                                    <span asp-validation-for="Input.SpeakerLastName" class="text-danger small d-block mt-1"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Input.Phone" class="form-label"></label>
+                                    <input asp-for="Input.Phone" type="tel" autocomplete="tel" class="form-control form-control-lg" />
+                                    <span asp-validation-for="Input.Phone" class="text-danger small d-block mt-1"></span>
+                                </div>
+                                <div class="col-12">
+                                    <label asp-for="Input.Institution" class="form-label"></label>
+                                    <input asp-for="Input.Institution" class="form-control form-control-lg" />
+                                    <span asp-validation-for="Input.Institution" class="text-danger small d-block mt-1"></span>
+                                </div>
+                                <div class="col-12">
+                                    <label asp-for="Input.PaperTitle" class="form-label"></label>
+                                    <input asp-for="Input.PaperTitle" class="form-control form-control-lg" />
+                                    <span asp-validation-for="Input.PaperTitle" class="text-danger small d-block mt-1"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Input.SectionId" class="form-label"></label>
+                                    <select asp-for="Input.SectionId" asp-items="Model.Sections" class="form-select form-select-lg">
+                                        <option value="">Select section</option>
+                                    </select>
+                                    <span asp-validation-for="Input.SectionId" class="text-danger small d-block mt-1"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Input.ParticipationMethod" class="form-label"></label>
+                                    <select asp-for="Input.ParticipationMethod" class="form-select form-select-lg">
+                                        <option value="">Select format</option>
+                                        <option value="In-person">In-person</option>
+                                        <option value="Part-time">Part-time</option>
+                                        <option value="Remote">Remote</option>
+                                    </select>
+                                    <span asp-validation-for="Input.ParticipationMethod" class="text-danger small d-block mt-1"></span>
+                                </div>
+                            </div>
+
+                            <h2 class="h6 text-secondary text-uppercase fw-semibold mt-4 mb-3">Manager / supervisor (optional)</h2>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label asp-for="Input.ManagerFullName" class="form-label"></label>
+                                    <input asp-for="Input.ManagerFullName" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Input.ManagerEmployment" class="form-label"></label>
+                                    <input asp-for="Input.ManagerEmployment" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Input.ManagerDegree" class="form-label"></label>
+                                    <input asp-for="Input.ManagerDegree" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Input.ManagerPosition" class="form-label"></label>
+                                    <input asp-for="Input.ManagerPosition" class="form-control" />
+                                </div>
+                            </div>
+
+                            <h2 class="h6 text-secondary text-uppercase fw-semibold mt-4 mb-3">Files</h2>
+                            <div class="mb-3">
+                                <label asp-for="Input.PaperFile" class="form-label"></label>
+                                <input asp-for="Input.PaperFile" type="file" class="form-control" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                                <div class="form-text text-secondary">Microsoft Word <strong>.docx</strong> only (Word 2007 or newer). Save as .docx if your file is .doc.</div>
+                                <span asp-validation-for="Input.PaperFile" class="text-danger small d-block mt-1"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label asp-for="Input.PresentationFile" class="form-label"></label>
+                                <input asp-for="Input.PresentationFile" type="file" class="form-control" accept=".ppt,.pptx,.pdf" />
+                                <div class="form-text text-secondary"><strong>.ppt</strong>, <strong>.pptx</strong>, or <strong>.pdf</strong></div>
+                                <span asp-validation-for="Input.PresentationFile" class="text-danger small d-block mt-1"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-100 sc-btn-primary py-3">Submit registration</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function () {
+            const paperId = '@Html.IdFor(m => m.Input.PaperFile)';
+            const presId = '@Html.IdFor(m => m.Input.PresentationFile)';
+            const form = document.querySelector('form[enctype="multipart/form-data"]');
+            if (!form) return;
+
+            const paperEl = document.getElementById(paperId);
+            const presEl = document.getElementById(presId);
+            [paperEl, presEl].forEach(function (el) {
+                if (!el) return;
+                el.addEventListener('change', function () {
+                    el.setCustomValidity('');
+                });
+            });
+
+            form.addEventListener('submit', function (e) {
+                const paper = document.getElementById(paperId);
+                const pres = document.getElementById(presId);
+                const $form = $(form);
+                const validator = $form.data('validator');
+                if (!paper || !paper.files || !paper.files.length) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const msg = 'Please attach your conference paper as a .docx file.';
+                    if (paper) {
+                        paper.setCustomValidity(msg);
+                        paper.reportValidity();
+                        paper.setCustomValidity('');
+                    }
+                    if (validator) {
+                        validator.showErrors({ 'Input.PaperFile': msg });
+                        validator.focusInvalid();
+                    }
+                    return;
+                }
+                if (!pres || !pres.files || !pres.files.length) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const msg = 'Please attach your presentation (.ppt, .pptx, or .pdf).';
+                    if (pres) {
+                        pres.setCustomValidity(msg);
+                        pres.reportValidity();
+                        pres.setCustomValidity('');
+                    }
+                    if (validator) {
+                        validator.showErrors({ 'Input.PresentationFile': msg });
+                        validator.focusInvalid();
+                    }
+                }
+            }, true);
+        })();
+    </script>
+}

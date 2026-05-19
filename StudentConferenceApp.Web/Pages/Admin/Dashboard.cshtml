@@ -1,0 +1,105 @@
+﻿@page
+@model StudentConferenceApp.Web.Pages.Admin.DashboardModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container">
+    <h2 class="mb-4">Admin Dashboard</h2>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5>Total Participants</h5>
+                    <h2>@Model.TotalParticipants</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5>Approved</h5>
+                    <h2>@Model.ApprovedParticipants</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5>Pending</h5>
+                    <h2>@Model.PendingParticipants</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-danger">
+                <div class="card-body">
+                    <h5>Rejected</h5>
+                    <h2>@Model.RejectedParticipants</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Quick Actions -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    Quick Actions
+                </div>
+                <div class="card-body">
+                    <a asp-page="/Admin/Participants" class="btn btn-primary mb-2 w-100">
+                        Manage All Participants
+                    </a>
+                    <button class="btn btn-success mb-2 w-100" onclick="generateAllDocuments()">
+                        Generate All Documents
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Registrations -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    Recent Registrations
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.RecentParticipants)
+                            {
+                                <tr>
+                                    <td>@p.FullName</td>
+                                    <td>
+                                        <span class="badge bg-@GetStatusBadge(p.Status)">@p.Status</span>
+                                    </td>
+                                    <td>@p.RegistrationDate.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function generateAllDocuments() {
+            alert("Document generation feature will be implemented with QuestPDF.");
+        }
+    </script>
+}

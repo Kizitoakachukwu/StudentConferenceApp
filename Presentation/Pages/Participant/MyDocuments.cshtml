@@ -1,0 +1,77 @@
+@page
+@model Presentation.Pages.Models.MyDocumentsModel
+@{
+    ViewData["Title"] = "Documents";
+}
+
+<div class="container py-4 py-md-5">
+    <div class="mb-4">
+        <h1 class="h3 fw-bold text-white mb-1">My documents</h1>
+        <p class="text-secondary mb-0">Downloads for <strong class="text-light">@Model.Participant!.FullName</strong></p>
+    </div>
+
+    <div class="sc-panel p-4 p-md-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h2 class="h6 text-uppercase text-muted fw-semibold mb-3">Conference paper</h2>
+                @if (!string.IsNullOrEmpty(Model.Participant.DocumentPath))
+                {
+                    <a href="@Model.Participant.DocumentPath" class="btn btn-outline-primary" download>
+                        <i class="bi bi-file-earmark-word me-1"></i>Download paper
+                    </a>
+                }
+                else
+                {
+                    <p class="text-muted small mb-0">No file on record.</p>
+                }
+            </div>
+            <div class="col-md-6">
+                <h2 class="h6 text-uppercase text-muted fw-semibold mb-3">Presentation</h2>
+                @if (!string.IsNullOrEmpty(Model.Participant.PresentationPath))
+                {
+                    <a href="@Model.Participant.PresentationPath" class="btn btn-outline-primary" download>
+                        <i class="bi bi-easel me-1"></i>Download presentation
+                    </a>
+                }
+                else
+                {
+                    <p class="text-muted small mb-0">No file on record.</p>
+                }
+            </div>
+            <div class="col-12 border-top pt-4">
+                <h2 class="h6 text-uppercase text-muted fw-semibold mb-3">Registration report (ZIP)</h2>
+                <p class="small text-muted">Contains registration data as Word and Excel files.</p>
+                @if (!string.IsNullOrEmpty(Model.Participant.RegistrationReportZipPath))
+                {
+                    <a href="@Model.Participant.RegistrationReportZipPath" class="btn btn-success" download>
+                        <i class="bi bi-file-zip me-1"></i>Download ZIP
+                    </a>
+                }
+                else
+                {
+                    <p class="text-muted small mb-0">No report generated.</p>
+                }
+            </div>
+            <div class="col-12 border-top pt-4">
+                <h2 class="h6 text-uppercase text-muted fw-semibold mb-3">Other</h2>
+                <div class="d-flex flex-wrap gap-2">
+                    @if (!string.IsNullOrEmpty(Model.Participant.CertificatePath))
+                    {
+                        <a href="@Model.Participant.CertificatePath" class="btn btn-outline-secondary btn-sm" download>Certificate</a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Participant.InvitationPath))
+                    {
+                        <a href="@Model.Participant.InvitationPath" class="btn btn-outline-secondary btn-sm" download>Invitation</a>
+                    }
+                    @if (string.IsNullOrEmpty(Model.Participant.CertificatePath) && string.IsNullOrEmpty(Model.Participant.InvitationPath))
+                    {
+                        <span class="text-muted small">No additional generated files.</span>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 pt-3 border-top">
+            <a asp-page="/Participant/Dashboard" class="btn btn-link ps-0"><i class="bi bi-arrow-left me-1"></i>Back to dashboard</a>
+        </div>
+    </div>
+</div>

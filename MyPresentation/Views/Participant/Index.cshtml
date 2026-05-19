@@ -1,0 +1,28 @@
+﻿@model List<ParticipantDto>
+
+<h2 class="mb-4">Registered Participants</h2>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Institution</th>
+            <th>Paper Title</th>
+            <th>Email</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.FullName</td>
+                <td>@p.Institution</td>
+                <td>@p.PaperTitle</td>
+                <td>@p.Email</td>
+                <td>@p.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>

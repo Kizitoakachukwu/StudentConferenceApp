@@ -1,0 +1,42 @@
+@page
+@model Presentation.Pages.Models.DashboardModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="container py-4 py-md-5">
+    <h1 class="h3 fw-bold text-white mb-4">Administration</h1>
+
+    <div class="row g-4 mb-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="sc-panel p-4 h-100">
+                <p class="text-muted small text-uppercase fw-semibold mb-1">Total</p>
+                <p class="display-6 fw-bold mb-0">@Model.TotalParticipants</p>
+                <p class="small text-muted mb-0">Participants</p>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="sc-panel p-4 h-100 border-start border-success border-4">
+                <p class="text-muted small text-uppercase fw-semibold mb-1">Approved</p>
+                <p class="display-6 fw-bold text-success mb-0">@Model.ApprovedParticipants</p>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="sc-panel p-4 h-100 border-start border-warning border-4">
+                <p class="text-muted small text-uppercase fw-semibold mb-1">Pending</p>
+                <p class="display-6 fw-bold text-warning mb-0">@Model.PendingParticipants</p>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="sc-panel p-4 h-100 border-start border-danger border-4">
+                <p class="text-muted small text-uppercase fw-semibold mb-1">Rejected</p>
+                <p class="display-6 fw-bold text-danger mb-0">@Model.RejectedParticipants</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2">
+        <a asp-page="/Admin/Participants" class="btn btn-primary sc-btn-primary"><i class="bi bi-people me-1"></i>Participants</a>
+        <a asp-page="/Admin/GenerateDocuments" class="btn btn-outline-light border-secondary"><i class="bi bi-file-earmark-text me-1"></i>Documents</a>
+    </div>
+</div>

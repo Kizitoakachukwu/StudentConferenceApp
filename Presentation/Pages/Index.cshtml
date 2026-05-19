@@ -1,0 +1,33 @@
+@page
+@model StudentConferenceApp.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="sc-hero py-5 min-vh-100 d-flex align-items-center">
+    <div class="container py-lg-5">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-9 col-xl-8">
+                <img src="~/images/logo.png" alt="StudentConferenceApp" class="sc-hero-logo mb-4 mx-auto d-block" asp-append-version="true" />
+                <p class="text-uppercase small fw-semibold sc-hero-muted mb-3 tracking-wide">Participant registration</p>
+                <h1 class="display-5 fw-bold mb-4 lh-sm">
+                    Register for the conference — submit materials and receive documents automatically
+                </h1>
+                <p class="lead sc-hero-muted mb-5 mx-auto" style="max-width: 36rem;">
+                    Create your account, then complete your conference profile in your personal area: paper, presentation, section, and participation details. Registration reports are generated for you.
+                </p>
+                <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                    <a asp-page="/Register" class="btn btn-light btn-lg px-4 py-3 fw-semibold shadow">
+                        <i class="bi bi-person-plus me-2"></i>Create account
+                    </a>
+                    <a asp-page="/Login" class="btn btn-outline-light btn-lg px-4 py-3 fw-semibold">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Sign in
+                    </a>
+                </div>
+                <p class="small sc-hero-muted mt-5 mb-0">
+                    Sukhoi State Technical University of Gomel — student conference portal
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

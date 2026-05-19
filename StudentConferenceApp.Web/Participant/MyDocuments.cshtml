@@ -1,0 +1,47 @@
+﻿@page
+@model StudentConferenceApp.Web.Pages.Participant.MyDocumentsModel
+
+@{
+    ViewData["Title"] = "My Documents";
+}
+
+<div class="container">
+    <h2 class="mb-4">My Documents</h2>
+
+    <div class="alert alert-info" role="alert">
+        Here you can download your automatically generated documents.
+    </div>
+
+    @if (Model.Documents.Any())
+    {
+        <div class="row">
+            @foreach (var doc in Model.Documents)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@doc.DocumentType</h5>
+                            <p class="text-muted">Generated on: @doc.GeneratedAt.ToString("dd MMMM yyyy")</p>
+                            
+                            <a href="@doc.FilePath"
+                                   class="btn btn-primary mt-3"
+                                   target="_blank">
+                                <i class="bi bi-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            No documents available yet. Documents will be generated automatically after your registration is approved.
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-page="/Participant/Dashboard" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+@page
+@model StudentConferenceApp.Web.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Create account";
+}
+
+<section class="py-5 min-vh-100 d-flex align-items-center sc-hero">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5 col-xl-4">
+                <div class="sc-card overflow-hidden">
+                    <div class="text-center pt-4 pb-2 px-4 border-bottom border-secondary border-opacity-25">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-3 sc-accent-soft" style="width: 56px; height: 56px;">
+                            <i class="bi bi-person-vcard fs-3 text-primary"></i>
+                        </div>
+                        <h2 class="h4 fw-bold mb-1">Create account</h2>
+                        <p class="small text-secondary mb-0">Step 1 of 2 — you will complete conference registration after signing in</p>
+                    </div>
+                    <div class="p-4 p-md-5">
+                        <form method="post" novalidate>
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small" role="alert"></div>
+                            <div class="mb-3">
+                                <label asp-for="Input.FullLastName" class="form-label"></label>
+                                <input asp-for="Input.FullLastName" class="form-control form-control-lg" />
+                                <span asp-validation-for="Input.FullLastName" class="text-danger small d-block mt-1"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Input.Email" class="form-label"></label>
+                                <input asp-for="Input.Email" class="form-control form-control-lg" autocomplete="email" />
+                                <span asp-validation-for="Input.Email" class="text-danger small d-block mt-1"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Input.Password" class="form-label"></label>
+                                <input asp-for="Input.Password" class="form-control form-control-lg" autocomplete="new-password" />
+                                <span asp-validation-for="Input.Password" class="text-danger small d-block mt-1"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label asp-for="Input.ConfirmPassword" class="form-label"></label>
+                                <input asp-for="Input.ConfirmPassword" class="form-control form-control-lg" autocomplete="new-password" />
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger small d-block mt-1"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 sc-btn-primary py-3">Create account</button>
+                        </form>
+                        <p class="text-center small text-secondary mt-4 mb-0">
+                            Already registered?
+                            <a asp-page="/Login" class="fw-semibold">Sign in</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

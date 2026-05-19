@@ -1,0 +1,73 @@
+﻿@page
+@model StudentConferenceApp.Web.Pages.Admin.ParticipantsModel
+
+@{
+    ViewData["Title"] = "Manage Participants";
+}
+
+<div class="container">
+    <h2 class="mb-4">All Participants (@Model.Participants.Count)</h2>
+
+    <div class="mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search by name or email..." onkeyup="searchTable()">
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover" id="participantsTable">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Institution</th>
+                    <th>Paper Title</th>
+                    <th>Participation Method</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model.Participants)
+                {
+                    <tr>
+                        <td>@p.FullName</td>
+                        <td>@p.Institution</td>
+                        <td>@p.PaperTitle</td>
+                        <td>@p.ParticipationMethod</td>
+                        <td>
+                            <span class="badge bg-@GetStatusBadge(p.Status)">@p.Status</span>
+                        </td>
+                        <td>
+                            <a asp-page="/Admin/Participants" asp-route-id="@p.Id" class="btn btn-sm btn-info">View</a>
+                            
+                            @if (p.Status == "Pending")
+                            {
+                                <form method="post" asp-page-handler="Approve" style="display:inline;">
+                                    <input type="hidden" name="id" value="@p.Id" />
+                                    <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                                </form>
+                                
+                                <form method="post" asp-page-handler="Reject" style="display:inline;">
+                                    <input type="hidden" name="id" value="@p.Id" />
+                                    <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function searchTable() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var rows = document.querySelectorAll("#participantsTable tbody tr");
+            
+            rows.forEach(row => {
+                var text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+        }
+    </script>
+}

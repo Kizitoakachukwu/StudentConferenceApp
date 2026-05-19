@@ -1,0 +1,72 @@
+## Build
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]uild/
+msbuild.log
+msbuild.err
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.rsuser
+*.sln.docstates
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Visual Studio / Rider / VS Code
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.DotSettings.user
+
+## NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+## EF / tools
+*.dbmdl
+*.jfm
+
+## ASP.NET / secrets
+appsettings.*.local.json
+secrets.json
+*.pfx
+*.publishsettings
+
+## OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+## Cursor / agent
+.cursor/
+agent-transcripts/
+agent-tools/
+
+## Generated uploads (keep folder structure optional)
+Presentation/wwwroot/papers/
+Presentation/wwwroot/presentations/
+Presentation/wwwroot/generated/
+**/wwwroot/lib/
+
+## User-specific connection strings (use appsettings.Development.json locally)
+# appsettings.Development.json

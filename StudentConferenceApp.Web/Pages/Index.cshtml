@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Student Conference Registration";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4">Student Conference 2026</h1>
+            <p class="lead">Register now for the annual student conference</p>
+            
+            <div class="mt-4">
+                <a asp-page="/Register" class="btn btn-primary btn-lg">Register as Participant</a>
+                <a asp-page="/Login" class="btn btn-outline-primary btn-lg">Login</a>
+            </div>
+        </div>
+    </div>
+</div>

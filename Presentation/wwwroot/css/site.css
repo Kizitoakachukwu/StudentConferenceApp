@@ -1,0 +1,217 @@
+/* Student Conference — design tokens */
+:root {
+  --sc-bg: #0c1118;
+  --sc-surface: #151c26;
+  --sc-surface-2: #1e2836;
+  --sc-border: rgba(255, 255, 255, 0.08);
+  --sc-text: #e8eef7;
+  --sc-muted: #94a3b8;
+  --sc-accent: #0d9488;
+  --sc-accent-2: #0ea5e9;
+  --sc-accent-hover: #0f766e;
+  --sc-accent-soft: rgba(13, 148, 136, 0.2);
+  --sc-success: #22c55e;
+  --sc-radius: 12px;
+  --sc-radius-lg: 16px;
+  --sc-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --sc-font: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--sc-font);
+  background: linear-gradient(165deg, #0a1018 0%, #0f172a 50%, #0c1822 100%);
+  color: var(--sc-text);
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  color: var(--sc-accent);
+}
+
+a:hover {
+  color: #5eead4;
+}
+
+.sc-brand-icon {
+  color: var(--sc-accent) !important;
+}
+
+.sc-brand-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: min(220px, 55vw);
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f1f5f9;
+  padding: 4px 8px;
+}
+
+/* Navbar */
+.sc-navbar {
+  background: rgba(15, 20, 25, 0.85) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sc-border);
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.sc-navbar .navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--sc-text) !important;
+}
+
+.sc-navbar .nav-link {
+  color: var(--sc-muted) !important;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem !important;
+  margin: 0 0.1rem;
+}
+
+.sc-navbar .nav-link:hover,
+.sc-navbar .nav-link:focus {
+  color: var(--sc-text) !important;
+  background: var(--sc-accent-soft);
+}
+
+.sc-navbar .btn-outline-light {
+  border-color: var(--sc-border);
+  color: var(--sc-text);
+}
+
+.sc-navbar .btn-outline-light:hover {
+  background: var(--sc-surface-2);
+  border-color: var(--sc-muted);
+  color: var(--sc-text);
+}
+
+/* Footer */
+.sc-footer {
+  margin-top: auto;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--sc-border);
+  background: rgba(10, 14, 20, 0.6);
+  color: var(--sc-muted);
+  font-size: 0.875rem;
+}
+
+/* Cards & forms (dark theme pages) */
+.sc-card {
+  background: var(--sc-surface);
+  border: 1px solid var(--sc-border);
+  border-radius: var(--sc-radius-lg);
+  box-shadow: var(--sc-shadow);
+  color: var(--sc-text);
+}
+
+.sc-card .form-control,
+.sc-card .form-select {
+  background: var(--sc-surface-2);
+  border-color: var(--sc-border);
+  color: var(--sc-text);
+}
+
+.sc-card .form-control:focus,
+.sc-card .form-select:focus {
+  background: #1e293b;
+  border-color: var(--sc-accent);
+  color: var(--sc-text);
+  box-shadow: 0 0 0 0.2rem var(--sc-accent-soft);
+}
+
+.sc-card .form-label {
+  color: var(--sc-muted);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.sc-hero {
+  background: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(13, 148, 136, 0.22), transparent),
+    linear-gradient(145deg, #0f172a 0%, #134e4a 42%, #0c4a6e 100%);
+  color: #fff;
+}
+
+.sc-hero-muted {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.sc-hero-logo {
+  height: auto;
+  width: min(320px, 85vw);
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f1f5f9;
+  padding: 12px 20px;
+  box-shadow: var(--sc-shadow);
+}
+
+.sc-btn-primary {
+  background: linear-gradient(135deg, var(--sc-accent), var(--sc-accent-2));
+  border: none;
+  font-weight: 600;
+}
+
+.sc-btn-primary:hover {
+  background: linear-gradient(135deg, var(--sc-accent-hover), #0369a1);
+}
+
+/* Light content area (dashboard inside container) */
+.sc-panel {
+  background: #fff;
+  color: #1e293b;
+  border-radius: var(--sc-radius-lg);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+}
+
+.sc-panel h2,
+.sc-panel h4 {
+  color: #0f172a;
+}
+
+/* Bootstrap overrides for light panels */
+.sc-panel .text-muted {
+  color: #64748b !important;
+}
+
+/* Validation */
+.field-validation-error,
+.text-danger {
+  font-size: 0.875rem;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.15), 0 0 0 0.2rem var(--sc-accent-soft);
+}

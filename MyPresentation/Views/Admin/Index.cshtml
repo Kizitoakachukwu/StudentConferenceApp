@@ -1,0 +1,32 @@
+﻿@model List<ParticipantDto>
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Institution</th>
+            <th>Paper</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.FullName</td>
+                <td>@p.Institution</td>
+                <td>@p.PaperTitle</td>
+                <td>@p.Status</td>
+                <td>
+                    <a class="btn btn-success btn-sm" href="/Admin/Approve/@p.Id">Approve</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/Reject/@p.Id">Reject</a>
+                    <a class="btn btn-secondary btn-sm" href="/Admin/Details/@p.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
